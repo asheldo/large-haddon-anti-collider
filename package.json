@@ -1,0 +1,25 @@
+{
+    "name": "large-haddon-anti-collider",
+    "version": "0.0.0",
+    "description": "WFAS/WIMS for Person-Place, a Node.js Restify API",
+    "main": "./src/index.js",
+    "scripts": {
+	"test": "./node_modules/.bin/mocha ./*/*.spec.js"
+    },
+    "repository": {
+	"type": "git",
+	"url": "git+https://github.com/asheldo/large-haddon-anti-collider.git"
+    },
+    "keywords": ["api"],
+    "author": "asheldo",
+    "license": "ISC",
+    "bugs": {
+	"url": "https://github.com/asheldo/large-haddon-anti-collider/issues"
+    },
+    "homepage": "https://github.com/asheldo/",
+    "dependencies": {
+	"import-export": "^1.0.1",
+	"restify": "^4.3.0"
+    }
+}
+
