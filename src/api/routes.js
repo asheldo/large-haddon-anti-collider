@@ -1,5 +1,8 @@
-import repository from './repository'
+'use strict'
 
+const repository = require('./repository')
+
+// import log from '../logging'
 // TODO Could validate name content, overwritten id, ...
 
 // registrations with restify server presumably
@@ -9,6 +12,7 @@ server.get('/person/:person_id', getPerson)
 server.get('/place/:place_id', getPlace)
 server.post('person/:person_id/place/:place_id', postPersonPlace)
 server.get('/person/:person_id/place', getPersonPlaces)
+// statics found at bottom of page
 
 function postPerson(req, res, next) {
   try {
@@ -98,3 +102,5 @@ function getPersonPlaces(req, res, next) {
     res.send(500, e.message)
   }
 }
+
+// serve static resources

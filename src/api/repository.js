@@ -1,9 +1,17 @@
 // ./api/repository
-import memstore from './memstore'
+'use strict'
 
+module.exports.addPerson = addPerson
+module.exports.addPlace = addPlace
+module.exports.findPerson = findPerson
+module.exports.findPlace = findPlace
+module.exports.addPersonPlace = addPersonPlace
+module.exports.findPersonPlaces = findPersonPlaces
+
+const memstore = require('./memstore')
 const immutable = (o) => Object.freeze(o)
 
-export function addPerson(data) {
+function addPerson(data) {
   if (data.name == null) {
     data.error = "A person requires a :name"
     return data;
@@ -14,7 +22,7 @@ export function addPerson(data) {
   return immutable(person)
 }
 
-export function addPlace(data) {
+function addPlace(data) {
   // Not validating latitude/longitude
   if (data.name == null || data.latitude == null || data.longitude == null) {
     data.error = "A place requires a :name, :latitude, and :longitude"
@@ -27,7 +35,7 @@ export function addPlace(data) {
 }
 
 // immutable person or person-error
-export function findPerson(data) {
+function findPerson(data) {
   const id = parseInt(data.person_id)
   if (isNaN(id)) {
     data.error = "Person lookup requires valid :person_id"
@@ -38,7 +46,7 @@ export function findPerson(data) {
 }
 
 // immutable place or place-error
-export function findPlace(data) {
+function findPlace(data) {
   const id = parseInt(data.place_id)
   if (isNaN(id)) {
     data.error = "Place lookup requires valid :place_id"
@@ -49,7 +57,7 @@ export function findPlace(data) {
 }
 
 // immutable pair, or error-data
-export function addPersonPlace(data) {
+function addPersonPlace(data) {
   const person = findPerson(data)
   const place = findPlace(data)
   if (!person || !place) {
@@ -64,7 +72,7 @@ export function addPersonPlace(data) {
 }
 
 //  array of immutable Places, or error-data
-export function findPersonPlaces(data) {
+function findPersonPlaces(data) {
   const person = findPerson(data)
   if (!person) {
     return null

@@ -1,5 +1,7 @@
-// Set up import/export
-require('import-export');
+// ./index
+
+// This module lets you use ES6 modules (import/export syntax) in nodejs modules
+// require('import-export');
 
 const config = require('./config/server')
 const restify = require('restify')
@@ -19,7 +21,14 @@ server.on('uncaughtException', (req, res, route, err) => {
 })
 
 server.listen(config.port, function() {
-    // not import yet b/c of server.<method>s
     const routes = require('./api/routes')
+    // todo logging
     console.log(`Server listening, port: ${config.port}`)
 })
+
+server.get(
+  /\/(.*)?\..*/,
+  restify.plugins.serveStatic({
+    directory: './public',
+  })
+)

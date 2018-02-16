@@ -1,7 +1,7 @@
+'use strict'
 // ./api/memstore
 
-// TODO non-memory store -> require couchdb
-
+// TODO non-memory store   ->   require couchdb
 // TODO typescript and an interface?
 
 class sequence {
@@ -15,24 +15,24 @@ const personPlaceIDs = new Map()
 const personID = new sequence()
 const placeID = new sequence()
 
-export function addPerson(person) {
+module.exports.addPerson = (person) => {
   person.id = personID.next()
   persons.set(person.id, person)
   personPlaceIDs.set(person.id, new Set())
   return person
 }
-export function getPerson(personID){ return persons.get(personID) }
+module.exports.getPerson = (personID) => { return persons.get(personID) }
 
-export function addPlace(place) {
+module.exports.addPlace = (place) => {
   place.id = placeID.next()
   places.set(place.id, place)
   return place
 }
-export function getPlace(placeID) { return places.get(placeID)}
+module.exports.getPlace = (placeID) => { return places.get(placeID)}
 
-export function addPersonPlaceID(personID, placeID) {
+module.exports.addPersonPlaceID = (personID, placeID) => {
    const placeIDs = personPlaceIDs.get(personID)
    placeIDs.add(placeID)
    return placeID
 }
-export function getPersonPlaceIDs(personID) { return personPlaceIDs.get(personID) }
+module.exports.getPersonPlaceIDs = (personID) => { return personPlaceIDs.get(personID) }

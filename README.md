@@ -1,5 +1,8 @@
-# Large Haddon Anti-Collider (based on visitors)
-A starter Node.js restify api, with ability to digest WFAS and WIMS data (eventually).
+# Large Haddon Anti-Collider
+A starter Node.js restify api, with ability to digest:
+ * WFAS and 
+ * WIMS 
+data from their web services (eventually).
 
 ## Requirements
 Requires ES6 compatible [node.js installation](https://nodejs.org/en/download/package-manager/#windows), [v6.5 or later](https://kangax.github.io/compat-table/es6/#node65).
@@ -14,15 +17,13 @@ To install restify and dependencies locally:
 
 `cd large-h...`
 
-`npm link`
+`npm link` or `npm install`
 
 `node index.js`
 
 > ... Server listening, port: 3000 `
 
 ## Run unit tests (second terminal/console):
-
-`cd large-h...`
 
 Install mocha test framework locally:
 
@@ -34,8 +35,9 @@ Install mocha test framework locally:
 
 > ... 15 tests passed ...
 
-## Use GET / POST endpoints
+## Person/Place API - CRUD endpoints
 
+### Examples 
 Create a Person:
 
 `curl --data "name=bob" http://localhost:4000/person`
